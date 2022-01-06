@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola, estoy probando Vue</title>
+    <script src="https://unpkg.com/vue@next"></script> <!-- Importamos Vue mediante CDN -->
+    <!-- Lo que hace el @next de arriba es que siempre importará la última versión de Vue.
+    Podríamos sustituirlo por @ la versión que nos interesa para evitar cualquier posible cambio
+    en el comportamiento de nuestra aplicación con Vue. Por ejemplo /vue@3.0.2 -->
+</head>
+<body>
+    <h1>Vue.js</h1>
+    <div id="app">
+        <h2>{{ title }} - {{author}} - {{age}}</h2> <!-- Dobles claves para acceder a la propiedad que queremos -->
+    </div>
+    <div>Este div no lo controla Vue</div>
+    <script src="js/script.js"></script>
+</body>
+</html>
