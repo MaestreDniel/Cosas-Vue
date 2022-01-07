@@ -13,7 +13,26 @@
 <body>
     <h1>Vue.js</h1>
     <div id="app">
-        <h2>{{ title }} - {{author}} - {{age}}</h2> <!-- Dobles claves para acceder a la propiedad que queremos -->
+        <div v-if="showData"> <!-- Renderizado condicional, por lo tanto, esto se muestra cuando es true -->
+            <h2>{{ title }} - {{ author }} - {{ age }}</h2> <!-- Dobles claves para acceder a la propiedad que queremos -->
+        </div>
+        <button @click="miToggle"> <!-- Alternar entre mostrar o no mostrar -->
+            <span v-if="showData">Esconder info</span>
+            <!-- <span v-if="!showData">Mostrar info</span> --> <!-- Esto es una manera (if false)-->
+            <span v-else>Mostrar info</span> <!-- Esto es otra manera (si no se cumple ningún if) -->
+        </button>
+        <p v-show="showData">Se está mostrando la info</p> <!-- Se diferencia del if porque con v-show, se modifica el display de css -->
+        <!-- En cambio, con v-if, lo que ocurre es que el elemento se quita del DOM, se queda comentado (esto consume más recursos) -->
+
+        <button v-on:click="age++">Me hago más viejo</button>
+        <button v-on:click="age--">Me hago más joven</button>
+        <!-- Directiva v-on para añadir eventos y después de los dos puntos, el tipo de evento.
+        No usa las dobles claves en ese age porque no es parte de la plantilla que se está renderizando en el DOM,
+        las {{}} solo son para renderizar el contenido. Esto puede ser en cualquier elemento, pero en este caso
+        hemos usado un button por comodidad -->
+        <p @click="title = 'Vue'">Pulsa aquí</p> <!-- Una forma de cambiar el valor de la propiedad -->
+        <p @click="cambiaTitulo">Pulsa aquí también</p> <!-- Otra forma. Puede acceder al método poniendo su nombre, no necesita los () -->
+        <button @click="cambiaTituloDos('¿No te cansas de pulsar cosas?')">No pulses más</button><br><br> <!-- Otra forma, pasando el valor como parámetro -->
     </div>
     <div>Este div no lo controla Vue</div>
     <script src="js/script.js"></script>
