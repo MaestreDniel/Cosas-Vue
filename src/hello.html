@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Vue  3  CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      .fondoVerd {
+        background-color: #4fc08d;
+      }
+      .row {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }} <!-- Ejemplo 1 -->
+      <div v-bind:class="nomClasse">This is vue.</div> <!-- Ejemplo 2. Se pasa el nombre de la clase declarada en el script -->
+      <ol>
+        <li v-for="a in coches" :key="a">{{ `Modelo: ${a.name}` }}</li> <!-- Ejemplo 3 -->
+      </ol>
+      <div class="row">
+        <label><b>Missatge:</b><span>{{ message }}</span></label> <!-- Ejemplo 5 -->
+      </div>
+      <input v-model="message" />
+    </div>
+    
+  </body>
+  <script>
+    const app = {
+      data() {
+        return {
+          message: 'Hello Vue!', // Ejemplo 1
+          muestra: true,
+          nomClasse: 'fondoVerd', // Ejemplo 2
+          coches: [{name: 'Toyota'}, {name: 'Audi'}, {name: 'Renault'}], // // Ejemplo 3. Para cada objeto tengo que poner las {}
+        }
+      },
+    }
+    Vue.createApp(app).mount('#app') // Apunta al id del div de arriba
+  </script>
+</html>
